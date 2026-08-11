@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:escaped@example.test
+DTSTART:20260808T120000Z
+SUMMARY:Comma\, semicolon\; colon: preserved
+DESCRIPTION:First line\nSecond line
+LOCATION:Room\, 4\; north
+ORGANIZER;CN="Example: Coordinator":mailto:coordinator@example.test
+ATTENDEE;CN="Núria, Test":mailto:nuria@example.test
+CATEGORIES:Research,Calendars
+URL:https://example.test/path:segment
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:=HYPERLINK("https://evil.example"\,"Click")
+N:Formula;Contact;;;
+ORG:@SUM(1+1)
+TITLE:+cmd|' /C calc'!A0
+TEL:+351 912 345 678
+ADR:;;-CMD example street;Fictional City;;0000;Testland
+NOTE:=1+1
+URL:+malicious-text
+END:VCARD

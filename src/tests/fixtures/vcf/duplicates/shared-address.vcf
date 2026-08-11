@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Maria Santos
+N:Santos;Maria;;;
+ADR;TYPE=home:;;10 Example Lane;Porto;;4000-001;Portugal
+EMAIL:maria@example.test
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Pedro Santos
+N:Santos;Pedro;;;
+ADR;TYPE=home:;;10 Example Lane;Porto;;4000-001;Portugal
+EMAIL:pedro@example.test
+END:VCARD

@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Robin Patel
+N:Patel;Robin;;;
+ORG:Fictional Works
+TEL;TYPE=work:+351 210 000 500
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Casey Okafor
+N:Okafor;Casey;;;
+ORG:Fictional Works
+TEL;TYPE=work:+351 210 000 500
+END:VCARD

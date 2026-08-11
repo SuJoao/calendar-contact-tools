@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noEmit": true,
+    "types": ["node", "vite/client"]
+  },
+  "include": [
+    "vite.config.ts",
+    "scripts/**/*.ts",
+    "playwright.config.ts",
+    "eslint.config.js",
+    "src/routePaths.ts",
+    "src/routes.ts",
+    "src/types.ts",
+    "src/config/**/*.ts",
+    "src/content/**/*.ts",
+    "src/utils/sponsors.ts",
+    "src/data/*.json"
+  ]
+}

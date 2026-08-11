@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Sam Rivera
+N:Rivera;Sam;;;
+KIND:individual
+GENDER:X
+ANNIVERSARY:2020-08-08
+EMAIL;TYPE=home;PREF=1:sam@example.test
+TZ:Europe/Lisbon
+GEO:geo:38.7223,-9.1393
+END:VCARD

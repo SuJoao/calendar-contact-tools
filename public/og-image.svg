@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Calendar Contact Tools</title>
+  <desc id="desc">Private browser tools for ICS calendars and VCF contacts</desc>
+  <rect width="1200" height="630" fill="#f5f6f2"/>
+  <rect x="72" y="72" width="1056" height="486" rx="36" fill="#ffffff" stroke="#c9d3cd" stroke-width="3"/>
+  <rect x="120" y="126" width="116" height="116" rx="27" fill="#165c47"/>
+  <path d="M148 164h60v54h-60zM148 182h60M163 151v25M193 151v25" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="276" y="176" fill="#16352c" font-family="Arial, sans-serif" font-size="55" font-weight="700">Calendar Contact Tools</text>
+  <text x="276" y="229" fill="#49645b" font-family="Arial, sans-serif" font-size="30">Private browser utilities for .ics and .vcf files</text>
+  <line x1="120" y1="294" x2="1080" y2="294" stroke="#dbe2de" stroke-width="3"/>
+  <text x="120" y="376" fill="#16352c" font-family="Arial, sans-serif" font-size="42" font-weight="700">View · Convert · Merge · Clean</text>
+  <text x="120" y="438" fill="#49645b" font-family="Arial, sans-serif" font-size="28">Your files stay on your device. No signup required.</text>
+  <rect x="120" y="482" width="250" height="44" rx="22" fill="#e0f1ea"/>
+  <circle cx="151" cy="504" r="8" fill="#16805f"/>
+  <text x="173" y="513" fill="#165c47" font-family="Arial, sans-serif" font-size="24" font-weight="700">Processed locally</text>
+</svg>

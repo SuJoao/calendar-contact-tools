@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Ada Example
+N:Example;Ada;;;
+EMAIL:ada@example.test
+X-FICTIONAL-ID:alpha
+X-SHARED:one
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Ada Example
+N:Example;Ada;;;
+EMAIL:ada@example.test
+X-FICTIONAL-ID:beta
+X-SHARED:one
+END:VCARD

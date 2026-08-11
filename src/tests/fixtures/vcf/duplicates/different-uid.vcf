@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Samira Costa
+N:Costa;Samira;;;
+UID:samira-phone@example.test
+EMAIL:samira@example.test
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Samira Costa
+N:Costa;Samira;;;
+UID:samira-desktop@example.test
+EMAIL:SAMIRA@example.test
+END:VCARD

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112" role="img" aria-labelledby="title">
+  <title id="title">Example sponsor placeholder</title>
+  <rect width="112" height="112" rx="20" fill="#dff2e8"/>
+  <path d="M33 56h46M56 33v46" stroke="#165c47" stroke-width="8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Dr. Jane Q. Smith
+N:Smith;Jane;Q.;Dr.;PhD
+ORG:Example Corp.;Research;Applied Systems
+TITLE:Researcher
+ROLE:Lead
+EMAIL;TYPE=WORK,PREF:jane@example.test
+TEL;TYPE=CELL:+351 912 345 678
+ADR;TYPE=WORK:PO 5;Lab 2;1 Example Street;Lisbon;Lisbon;1000-001;Portugal
+URL:https://example.test/jane
+BDAY:--04-15
+UID:jane-smith@example.test
+END:VCARD

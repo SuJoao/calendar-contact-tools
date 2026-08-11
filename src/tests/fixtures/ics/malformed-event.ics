@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:valid-before@example.test
+DTSTART:20260808T120000Z
+SUMMARY:Valid before malformed event
+END:VEVENT
+BEGIN:VEVENT
+UID:broken@example.test
+DTSTART:not-a-date
+SUMMARY:Broken event
+END:VEVENT
+BEGIN:VEVENT
+UID:valid-after@example.test
+DTSTART:20260809T120000Z
+SUMMARY:Valid after malformed event
+END:VEVENT
+END:VCALENDAR

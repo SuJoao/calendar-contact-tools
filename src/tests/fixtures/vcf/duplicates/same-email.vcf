@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Jamie Chen
+N:Chen;Jamie;;;
+EMAIL:jamie@example.test
+TITLE:Senior Engineer
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Jamie Chen
+N:Chen;Jamie;;;
+EMAIL:JAMIE@example.test
+TITLE:Staff Engineer
+END:VCARD

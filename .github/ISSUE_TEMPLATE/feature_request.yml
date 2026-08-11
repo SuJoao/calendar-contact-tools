@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest a focused improvement that preserves local file processing.
+title: '[Feature]: '
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: User workflow
+      description: What calendar or contact task is difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Explain the smallest useful behavior change.
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy and compatibility considerations
+      description: Note any network, storage, dependency, browser, format, or accessibility implications.
+    validations:
+      required: true

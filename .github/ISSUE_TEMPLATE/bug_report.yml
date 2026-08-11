@@ -1,0 +1,64 @@
+name: Bug report
+description: Report a reproducible problem using fictional calendar or contact data.
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Never attach a real calendar, address book, or other personal data. Create the smallest fictional example that reproduces the issue.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the result you saw and what you expected instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool area
+      options:
+        - ICS viewer or CSV
+        - ICS merge
+        - ICS timezone fixer
+        - ICS recurrence viewer
+        - VCF viewer or CSV
+        - VCF merge
+        - VCF duplicate remover
+        - Site, accessibility, or deployment
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Include a minimal fictional fixture inline when safe and useful.
+      placeholder: |
+        1. Open …
+        2. Select a fictional file containing …
+        3. Choose …
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Firefox 153 on Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: Remove personal data, local paths, tokens, and credentials before pasting output.
+      render: shell
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I have not included real calendar/contact data, credentials, or other personal information.
+          required: true

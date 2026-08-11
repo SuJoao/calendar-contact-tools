@@ -1,0 +1,26 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Núñez;Sofía;;;
+FN:Sofía Núñez
+ORG:Northwind Workshop
+TITLE:Program Coordinator
+EMAIL;TYPE=WORK:sofia@example.test
+EMAIL;TYPE=HOME:s.nunez@example.test
+TEL;TYPE=CELL:+351 910 000 101
+TEL;TYPE=WORK:+351 210 000 202
+ADR;TYPE=WORK:;;12 Sample Street;Lisboa;;1000-001;Portugal
+URL:https://example.test/sofia
+BDAY:1990-04-03
+NOTE:Prefers email\, mornings only.
+CATEGORIES:Workshop,Planning
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+N:Tanaka;Ren;;;
+FN:Ren Tanaka
+ORG:Fictional Studio
+EMAIL:ren@example.test
+TEL;TYPE=voice:+81 3 0000 0000
+NOTE:This intentionally long note is folded to demonstrate 
+ continuation lines in a vCard record.
+END:VCARD

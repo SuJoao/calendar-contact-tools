@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Repeated Fields
+N:Fields;Repeated;;;
+EMAIL;TYPE=work:work@example.test
+EMAIL;TYPE=home;PREF=1:home@example.test
+TEL;TYPE=cell:+351 910 000 001
+TEL;TYPE=work:+351 210 000 001
+ADR;TYPE=home:;;1 Home Street;Porto;;4000-001;Portugal
+ADR;TYPE=work:;;2 Work Street;Lisbon;;1000-001;Portugal
+URL:https://example.test
+URL:javascript:alert(1)
+END:VCARD

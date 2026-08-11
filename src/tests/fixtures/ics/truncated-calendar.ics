@@ -1,0 +1,7 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:recoverable@example.test
+DTSTART:20260808T120000Z
+SUMMARY:Recoverable complete event
+END:VEVENT

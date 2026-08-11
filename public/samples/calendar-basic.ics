@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendar Contact Tools//Samples//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:planning-1@example.test
+DTSTAMP:20260801T090000Z
+DTSTART:20260812T140000Z
+DTEND:20260812T150000Z
+SUMMARY:Project planning, phase two
+LOCATION:Room 4\; North wing
+DESCRIPTION:Review milestones\nBring the draft.
+ORGANIZER;CN=Jordan Lee:mailto:jordan@example.test
+ATTENDEE;CN=Amélie Dubois:mailto:amelie@example.test
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:allday-1@example.test
+DTSTAMP:20260801T090000Z
+DTSTART;VALUE=DATE:20260820
+DTEND;VALUE=DATE:20260821
+SUMMARY:Team day
+DESCRIPTION:An all-day fictional event.
+END:VEVENT
+END:VCALENDAR

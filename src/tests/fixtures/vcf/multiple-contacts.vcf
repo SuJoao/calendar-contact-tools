@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Contact One
+N:One;Contact;;;
+EMAIL:one@example.test
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Contact Two
+N:Two;Contact;;;
+TEL:+1 555 0102
+END:VCARD

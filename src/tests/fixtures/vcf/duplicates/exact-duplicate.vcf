@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Avery Morgan
+N:Morgan;Avery;;;
+EMAIL;TYPE=work;PREF=1:avery@example.test
+TEL;TYPE=cell:+351 912 000 001
+UID:avery@example.test
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Morgan;Avery;;;
+FN:Avery Morgan
+TEL;TYPE=cell:+351 912 000 001
+EMAIL;PREF=1;TYPE=work:avery@example.test
+UID:avery@example.test
+END:VCARD

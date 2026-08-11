@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Alex Smith
+N:Smith;Alex;;;
+EMAIL:alex.one@example.test
+TEL:+1 202 555 0101
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Alex Smith
+N:Smith;Alex;;;
+EMAIL:alex.two@example.test
+TEL:+44 20 7946 0102
+END:VCARD

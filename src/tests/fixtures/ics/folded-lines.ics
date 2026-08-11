@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendar Contact Tools Test//EN
+BEGIN:VEVENT
+UID:folded@example.test
+DTSTART:20260808T120000Z
+DTEND:20260808T130000Z
+SUMMARY:A folded summary that continues
+ across a space
+DESCRIPTION:First part
+	and a tab continuation
+END:VEVENT
+END:VCALENDAR

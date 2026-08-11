@@ -1,0 +1,33 @@
+name: Sponsor maintenance
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Validate sponsors and identify expired entries
+        run: |
+          npm run validate:sponsors | tee sponsor-report.txt
+          {
+            echo '## Sponsor maintenance'
+            echo '```text'
+            cat sponsor-report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build

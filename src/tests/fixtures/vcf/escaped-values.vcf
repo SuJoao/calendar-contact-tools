@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Escaped Example
+N:Example;Escaped;;;
+ORG:Example\, Inc.;Research\;Development
+NOTE:Line one\nLine two with comma\, semicolon\; and slash\\
+CATEGORIES:One\, literal,Two
+END:VCARD

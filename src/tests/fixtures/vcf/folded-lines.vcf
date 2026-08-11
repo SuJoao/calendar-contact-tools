@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Folded Example
+NOTE:This is a long UTF-8 note about português and it con
+ tinues safely across a physical line.
+ADR;TYPE=HOME:;;12 Long Fictional Street;Porto;Porto;
+	4000-001;Portugal
+END:VCARD

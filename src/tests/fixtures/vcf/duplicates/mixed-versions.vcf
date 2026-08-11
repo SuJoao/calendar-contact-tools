@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:2.1
+FN:Renée Example
+N:Example;Renée;;;
+EMAIL;HOME:renee@example.test
+X-ABLABEL:Legacy label
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Renée Example
+N:Example;Renée;;;
+EMAIL;TYPE=home:renee@example.test
+ANNIVERSARY:2020-08-08
+KIND:individual
+END:VCARD

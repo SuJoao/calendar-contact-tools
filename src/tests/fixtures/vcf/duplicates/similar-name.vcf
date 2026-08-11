@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Jon Smith
+N:Smith;Jon;;;
+ORG:Fictional Research
+TITLE:Engineer
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:John Smith
+N:Smith;John;;;
+ORG:Fictional Research
+TITLE:Senior Engineer
+END:VCARD

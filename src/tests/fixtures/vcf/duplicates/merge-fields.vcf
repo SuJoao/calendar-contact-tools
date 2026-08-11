@@ -1,0 +1,20 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Kai Example
+N:Example;Kai;;;
+EMAIL;TYPE=home:kai@example.test
+TEL;TYPE=cell:+351 912 300 100
+ADR;TYPE=home:;;8 Sample Road;Coimbra;;3000-001;Portugal
+UID:kai@example.test
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Kai Example
+N:Example;Kai;;;
+EMAIL;TYPE=work:kai@work.example.test
+TEL;TYPE=work:+351 239 000 100
+ADR;TYPE=work:;;12 Fictional Avenue;Coimbra;;3000-002;Portugal
+ORG:Example Studio;Design
+TITLE:Designer
+UID:kai@example.test
+END:VCARD

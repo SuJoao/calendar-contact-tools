@@ -1,0 +1,29 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Silva;Marina;;;
+FN:Marina Silva
+ORG:Example Cooperative
+EMAIL:marina@example.test
+TEL:+351 912 345 678
+NOTE:Met at the fictional conference.
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+N:Silva;Marína;;;
+FN:Marína Silva
+ORG:Example Cooperative
+EMAIL:MARINA@example.test
+TEL:+351 (912) 345-678
+ADR:;;5 Demo Avenue;Porto;;;Portugal
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+N:Okafor;Chidi;;;
+FN:Chidi Okafor
+EMAIL:chidi@example.test
+TEL:+234 800 000 0000
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Malformed sample
+EMAIL:broken@example.test

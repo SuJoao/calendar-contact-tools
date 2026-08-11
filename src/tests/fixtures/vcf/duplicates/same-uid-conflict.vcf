@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Marta Silva
+N:Silva;Marta;;;
+UID:shared-uid@example.test
+EMAIL:marta@example.test
+TEL:+351 912 000 100
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Different Person
+N:Person;Different;;;
+UID:shared-uid@example.test
+EMAIL:different@example.test
+TEL:+1 202 555 0199
+END:VCARD

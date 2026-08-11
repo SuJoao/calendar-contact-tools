@@ -1,0 +1,26 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Jane Smith
+N:Smith;Jane;;Dr.;
+ORG:Example Corp.;Research
+TITLE:Senior Engineer
+EMAIL;TYPE=home:jane@example.test
+TEL;TYPE=cell;PREF=1:+351 912 345 678
+NOTE:Note from phone export.
+UID:phone-jane@example.test
+X-CUSTOM:Phone metadata
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+FN:Dr. Jane Smith
+N:Smith;Jane;Q.;Dr.;PhD
+ORG:Example Corp.;Research;Applied Systems
+TITLE:Staff Engineer
+EMAIL;TYPE=work:jane@example.test
+EMAIL;TYPE=work:jane@work.example.test
+TEL;TYPE=home;PREF=2:+351-912-345-678
+ADR;TYPE=work:;;1 Fictional Street;Lisbon;;1000-001;Portugal
+NOTE:Note from desktop export.
+UID:desktop-jane@example.test
+X-CUSTOM:Desktop metadata
+END:VCARD

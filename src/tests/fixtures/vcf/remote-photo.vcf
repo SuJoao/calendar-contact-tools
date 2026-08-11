@@ -1,0 +1,6 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Remote Photo
+PHOTO;MEDIATYPE=image/jpeg:https://images.example.test/contact.jpg
+LOGO:javascript:alert(1)
+END:VCARD

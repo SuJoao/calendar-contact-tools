@@ -1,0 +1,51 @@
+{
+  "name": "calendar-contact-tools",
+  "version": "1.0.0",
+  "description": "Privacy-first browser tools for ICS calendars and VCF contacts.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run validate:site && npm run validate:sponsors && tsc -b && vite build && npm run validate:dist",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty false",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:smoke": "playwright test --config playwright.smoke.config.ts",
+    "audit:dom": "tsx scripts/audit-dom-sinks.ts",
+    "validate:sponsors": "tsx scripts/validate-sponsors.ts",
+    "validate:site": "tsx scripts/validate-site.ts",
+    "validate:production-config": "tsx scripts/validate-site.ts --production",
+    "validate:dist": "tsx scripts/validate-dist.ts",
+    "validate:launch": "npm run audit:dom && npm run validate:production-config && npm run build",
+    "verify:deployment": "tsx scripts/verify-deployment.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/source-sans-3": "^5.3.0",
+    "ical.js": "^2.2.1",
+    "rrule": "^2.8.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^24.10.1",
+    "eslint": "^10.8.1",
+    "globals": "^17.3.0",
+    "jsdom": "^27.0.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Vendor Example
+N:Example;Vendor;;;
+item1.EMAIL;TYPE=INTERNET:vendor@example.test
+item1.X-ABLABEL:Custom label
+X-SOCIALPROFILE;TYPE=fake:https://social.example.test/vendor
+X-CUSTOM:<script>alert(1)</script>
+END:VCARD
