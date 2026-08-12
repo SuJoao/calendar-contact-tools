@@ -6,7 +6,7 @@ const sample = (name: string): string => resolve('public/samples', name);
 test('loads direct routes, theme controls, and the 404 page', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await page.getByRole('button', { name: 'Toggle light and dark mode' }).click();
+  await page.getByRole('button', { name: 'Switch to dark mode' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', /dark|light/);
   await page.goto('/privacy');
   await expect(

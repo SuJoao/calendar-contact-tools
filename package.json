@@ -1,7 +1,7 @@
 {
   "name": "calendar-contact-tools",
   "version": "1.0.0",
-  "description": "Privacy-first browser tools for ICS calendars and VCF contacts.",
+  "description": "Browser tools for viewing and transforming ICS calendars and VCF contacts.",
   "private": true,
   "license": "MIT",
   "type": "module",

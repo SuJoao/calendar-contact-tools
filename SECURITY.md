@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-The reporting address is the `contactEmail` value in `src/config/site.ts`. It is intentionally not published while that value is a placeholder; `npm run validate:production-config` blocks launch until a real address is configured. Include reproduction steps and impact, but never include real ICS or VCF data—use a minimal fictional fixture.
+The reporting address is the `contactEmail` value in `src/config/site.ts`. `npm run validate:production-config` blocks deployment if that address or another required public value is missing. Include reproduction steps and impact, but never include real ICS or VCF data—use a minimal fictional fixture.
 
 ## Security model
 

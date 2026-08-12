@@ -1,181 +1,124 @@
-# Calendar Contact Tools — Design System
+# Calendar Contact Tools — Design Contract
 
-## Product
+## Product intent
 
-Calendar Contact Tools is a set of browser utilities for inspecting and transforming ICS calendar and VCF contact files. The product promise is practical: choose a file, solve one problem, download the result. The interface should communicate local processing, precision, and long-term maintenance without behaving like a marketing funnel.
+Calendar Contact Tools is a set of browser utilities for inspecting and transforming ICS calendar and VCF contact files. A visitor normally arrives with one job: choose a file, review the result, and download when needed. The interface prioritizes that path over storytelling or promotion.
 
-## Audience
+The visual principle is **quiet confidence through useful density**: compact, precise, familiar, and trustworthy. It should resemble a maintained internet utility, not a startup landing page, dashboard, or marketing funnel.
 
-Visitors usually arrive from search with an immediate task such as opening an ICS file, converting contacts to CSV, or removing duplicates. They need to identify the right tool, understand its limits, process a file, and leave. Navigation and uploader clarity take priority over storytelling.
+## Permanent rules
 
-## Design philosophy
+1. No emojis or text glyphs as interface icons.
+2. Use one icon family only; the product mark is the sole custom symbol.
+3. Color communicates state or action, not decoration.
+4. Every page has one primary intent.
+5. Remove before adding.
+6. Avoid repeated card layouts; use spacing, rules, and typography first.
+7. Use consistent verbs for consistent actions.
+8. Put the primary tool or action before supporting content.
+9. Supporting content exists only when it helps use, trust, or search intent.
+10. Empty space does not need decoration.
 
-The visual reference is a professionally maintained internet utility that has existed for years. The interface is calm, compact, and specific. Containment is used for functional surfaces; information relies on typography, whitespace, rules, tables, and definition lists. Visual interest comes from alignment and proportion rather than decoration.
+No gradients, glow, decorative pills, animated entrances, floating cards, fake browser chrome, or icon beside every heading. Functional containment is appropriate for uploaders, tables, comparisons, errors, and warnings.
 
-The memorable principle is: **quiet confidence through useful density**.
+## Typography
 
-## Anti-references
+Use locally bundled **Source Sans 3 Variable** for interface and prose. Use the system monospace stack only for raw ICS/vCard data, UID, TZID, file extensions, and code.
 
-- Startup landing pages with large heroes or conversion funnels
-- AI wrappers using card grids, gradient blobs, glowing controls, and pill labels
-- Bento dashboards and crypto-style high-chroma dark themes
-- Fake browser chrome, decorative monospace, or an icon beside every sentence
-- Generic phrases such as “powerful,” “seamless,” “supercharge,” or “get started”
-
-## Audit of the previous interface
-
-Ranked by visual impact:
-
-1. Nine identical rounded tool cards created card soup and an unnecessarily long mobile directory.
-2. Uppercase eyebrow text appeared above most sections even when it conveyed no state.
-3. Privacy appeared as a large tinted banner in the hero and again in tool headings.
-4. The uploader was a large dashed rectangle inside a large rounded, shadowed outer card.
-5. Sponsor and donation areas repeated the same bordered-card pattern as functional content.
-6. Related tools used decorative pills rather than a compact directory.
-7. Generous section gaps and a split hero delayed the tool directory.
-8. Tool-group headings and cards lacked strong shared alignment, making the page feel assembled from components rather than composed.
-9. Dark mode was mechanically related to light mode but too green and uniformly dark.
-
-## Typeface
-
-Primary: **Source Sans 3 Variable**, bundled locally through `@fontsource-variable/source-sans-3` under the OFL-1.1 license. It was selected for its excellent UI legibility, compact lowercase, broad weight range, and established editorial/utility character.
-
-Alternatives evaluated:
-
-- Geist: precise, but strongly associated with contemporary developer SaaS.
-- Instrument Sans: distinctive, but more display-oriented than this data-heavy utility needs.
-- IBM Plex Sans: credible and technical, but its personality is too prominent across dense tables.
-- Archivo: efficient and sturdy, but slightly industrial for longer instructions.
-- DM Sans: friendly and clear, but its geometry pushes the interface toward a generic product-template look.
-
-Monospace is limited to raw ICS/vCard data, UID, TZID, file extensions, and code. The fallback is `ui-monospace, SFMono-Regular, Consolas, monospace`.
-
-## Type scale
-
-The root size is 16px with a 1.55 body line height.
-
-- 13px: metadata, captions, table supporting text
-- 14px: navigation, breadcrumbs, compact controls
+- 13px: metadata, captions, table support text
+- 14px: navigation, breadcrumbs, dense controls, and tables
 - 16px: body and primary controls
-- 18px: small heading or tool name
-- 24px: section heading
-- 36px: tool-page H1
-- 42px: homepage H1, capped at 42px
+- 18px: tool names and small headings
+- 24px: section headings
+- 32–42px: page headings; never oversized
 
-Headings use weights 620–680 rather than maximum black weights. Headings use `text-wrap: balance`; tabular results use `font-variant-numeric: tabular-nums`.
+Heading weight is 620–680. Bold identifies hierarchy, not whole paragraphs. Prose uses a readable maximum width; data surfaces may use the wide layout.
 
-## Color tokens
+## Color
 
-One cobalt accent supports actions, links, focus, and selected states.
+One cobalt accent is reserved for links, primary actions, focus, and selection.
 
-Light:
+Light tokens:
 
-- Canvas: `#f7f8fa`
-- Surface: `#ffffff`
-- Quiet surface: `#f0f3f7`
-- Text: `#18202b`
-- Muted text: `#596575`
-- Border: `#d7dde6`
-- Strong border: `#b8c1ce`
-- Accent: `#2456a6`
-- Accent hover: `#1d478a`
-- Accent tint: `#eaf1fb`
-- Success/local: `#176b51`
-- Warning: `#8a5a00` on `#fff7df`
-- Danger: `#b42318` on `#fff0ee`
+- Canvas `#f7f8fa`, surface `#ffffff`, quiet surface `#f0f3f7`
+- Text `#18202b`, muted `#596575`
+- Border `#d7dde6`, strong border `#b8c1ce`
+- Accent `#2456a6`, hover `#1d478a`, tint `#eaf1fb`
+- Local/success `#176b51`, warning `#8a5a00`, danger `#b42318`
 
-Dark:
+Dark tokens:
 
-- Canvas: `#11151b`
-- Surface: `#171c23`
-- Quiet surface: `#1d2430`
-- Text: `#e9edf3`
-- Muted text: `#a4afbd`
-- Border: `#303946`
-- Strong border: `#465364`
-- Accent: `#82acec`
-- Accent hover: `#a2c2f2`
-- Accent tint: `#192a44`
-- Success/local: `#73c7aa`
+- Canvas `#11151b`, surface `#171c23`, quiet surface `#1d2430`
+- Text `#e9edf3`, muted `#a4afbd`
+- Border `#303946`, strong border `#465364`
+- Accent `#82acec`, hover `#a2c2f2`, tint `#192a44`
+- Local/success `#73c7aa`
 
-No gradients are used.
+Dark mode uses blue-charcoal rather than pure black. Status color must always have a text or structural cue; color alone never carries meaning.
 
-## Radius scale
+## Spacing, borders, and motion
 
-- 3px: inputs, table states, compact controls
-- 5px: buttons and selected-file rows
-- 8px: major functional surfaces such as the uploader and comparison panels
-- Full radius: genuine status badges only
+Use the `4, 8, 12, 16, 24, 32, 48, 64px` spacing scale. Closely related content uses 12–16px, components 24px, and major sections 32–48px. Mobile reduces vertical spacing deliberately.
 
-Informational sections generally have no radius because they have no containing card.
+Radius is 3px for inputs and dense table states, 5px for buttons and file rows, and 8px for major functional surfaces. Full radius is reserved for genuine status badges. Borders communicate input boundaries or grouping; shadows are limited to active drag feedback or a subtle light-mode tool surface.
 
-## Spacing scale
+Hover and focus transitions run for 100–160ms. Do not animate page entry, icons, sponsor cards, or layout position. Remove all transitions under `prefers-reduced-motion`.
 
-Base units: `4, 8, 12, 16, 24, 32, 48, 64px`.
+## Logo and icons
 
-- Control internals: 8–12px
-- Closely related content: 12–16px
-- Component separation: 24px
-- Section separation: 40–48px
-- Page top/bottom: 24–48px
+The product mark combines a calendar outline with a person silhouette. It is monoline, geometric, uses `currentColor` in the interface, and appears consistently in the header, footer, favicon, app icons, and Open Graph asset.
 
-The tool directory and tool surface use the wide layout. Instructions and policy prose use a readable 760px measure.
+Interface icons use the curated local Lucide subset in `src/components/Icon.ts`. Ship only icons used for recognition or interaction. Standard sizes are 16px for compact actions, 18px for controls, and 20px for categories. Decorative icons use `aria-hidden`; an icon-only control always has an accessible label.
 
-## Borders
+## Page hierarchy
 
-Borders are 1px solid and communicate structure, input boundaries, or row separation. They do not decorate every section. Dashed borders are limited to the actual drop target and use the strong border token.
+Tool pages follow:
 
-## Shadows
+1. Unique title and one sentence explaining the job
+2. Compact local-processing statement
+3. Functional tool surface: options, uploader, results
+4. Secondary sponsor placement
+5. Concise steps, limitations, FAQ, and related links
 
-Shadows are reserved for an active drag state or the primary tool surface on light backgrounds. Default surfaces use a border and at most `0 1px 2px rgba(24, 32, 43, 0.05)`. Dark mode relies on borders, not shadows.
+When input is empty, the uploader is primary. Once processed, results, review controls, and download become primary. Supporting text never competes with either state.
 
-## Interaction timing
+The homepage contains a short introduction, the calendar/contact tool directory, one sponsor row, and the footer. Do not add repeated trust blocks, generic FAQs, or marketing sections.
 
-- Hover/focus color: 120ms
-- Surface and drag state: 160ms
-- No page entrance animations, floating effects, or continuous motion
-- All transitions are removed under `prefers-reduced-motion`
+## Components
 
-## Component philosophy
+- Header: product mark and name, primary Calendar/Contacts navigation, quieter Sponsor/About links, icon-only theme control.
+- Uploader: one clear choose action, secondary sample action, selected-file rows, and a process action shown only when meaningful. Keep native input, drag/drop, and keyboard behavior.
+- Tables: dense 14px text, sticky headers, 44px minimum rows, horizontal scrolling inside the table region, and no nested cards.
+- Errors and warnings: clear heading or message, semantic color, screen-reader announcement, and recovery direction.
+- FAQ: divided disclosure rows, never individual cards.
+- Related tools: compact text links with separators.
+- Sponsor: clearly labeled horizontal placement, visually secondary, locally served artwork, and no animation or imitation download controls.
 
-- Header: compact product identification plus four destinations; no marketing CTA.
-- Breadcrumbs: subdued location context, not a navigation feature wall.
-- Tool directory: two-column textual lists with row separators and one directional affordance.
-- Functional tool surface: the only dominant contained region on a tool page.
-- Privacy: a compact local-processing statement close to the uploader.
-- Instructions: prose or numbered steps without a card.
-- FAQ: disclosure rows divided by rules.
-- Related tools: textual links divided by separators, not pills.
-- Donation: one restrained inline maintenance prompt near the footer.
+## Action vocabulary
 
-## Table design
+Use these verbs consistently:
 
-Tables use a dense 14px scale, tabular numerals, left-aligned text, sticky quiet-surface headers, 44px minimum row height, horizontal scrolling where necessary, and a subtle accent-tinted hover. Column rules are avoided; horizontal rules carry structure. Raw identifiers may use monospace. The table gets one boundary, never multiple nested cards.
+- **Choose file / Choose files** for file picker activation
+- **Use sample** for fictional local sample input
+- **Process** for starting parsing or transformation
+- **Search** and **Filter** for narrowing visible results
+- **Reset** for returning a current interface to its initial state
+- **Remove** for removing selected input or an exact copy
+- **Review** for inspecting a candidate decision
+- **Merge**, **Keep**, and **Exclude** for explicit resolution choices
+- **Preview** and **Apply** for the two stages of a reviewed merge
+- **Undo** for reverting the last reversible resolution
+- **Download** for creating any output file
+- **Cancel** for stopping bounded background work
 
-## Uploader design
+Inspect and View remain valid nouns or modes when they describe distinct tool behavior. Do not use Export when the action creates a download.
 
-The uploader is compact and operational. Its hierarchy is:
+## Accessibility and responsive behavior
 
-1. “Drop your ICS/VCF files here”
-2. A normal primary “Choose files” button
-3. Accepted extensions, size limit, and “Processed locally” metadata
-4. Sample and reset actions
-5. Selected-file rows and one process action
+Maintain visible focus, explicit labels, semantic tables, live status regions, 44px touch targets, AA-oriented contrast, and keyboard operation. Do not trade labels or decision clarity for icon-only minimalism.
 
-The native input remains accessible. The drop target is approximately 150px high on desktop and 132px on mobile, not a half-screen tutorial panel. Drag, focus, loading, error, disabled, and selected-file states each have distinct feedback.
-
-## Sponsor design
-
-Sponsors resemble compact classified sponsorships: a small “Sponsored” label, name, factual sentence, and visit affordance in a horizontal row. Fallback sponsorship inventory uses the same subdued treatment. Sponsor content is visually secondary to tools, never shadowed, animated, or styled like a primary button.
-
-## Dark mode
-
-Dark mode uses deep blue-charcoal surfaces rather than pure black or green-black. Contrast comes from surface steps and borders. Cobalt is lighter, warning and error tints are recalibrated, and shadows are removed. Data density and hierarchy remain identical to light mode.
-
-## Responsive behavior
-
-- 1280–1440px: 1180px functional width; directory is two columns.
-- 768px: navigation remains available, tool directory and instruction content can use two columns when space permits.
-- 375px: compact header with a clear menu treatment, single-column tool directory, 44px targets, 132px uploader, horizontal table scrolling, and full-width process action.
-- Comparison interfaces use horizontally scrollable or single-column panels rather than compressing field values.
-- Mobile spacing is deliberately reduced instead of merely stacking desktop sections.
+- At 1280–1440px, functional content may use the 1180px width and the directory uses two columns.
+- At 768px, controls wrap without forcing page overflow.
+- At 375–430px, navigation remains obvious, the directory is one column, the uploader compresses, and process actions use full width.
+- Tables and comparison areas own their horizontal scrolling; the page does not.
+- Duplicate resolution keeps explicit text because its choices are consequential.

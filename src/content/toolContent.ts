@@ -7,11 +7,7 @@ export interface ToolFaq {
 
 export interface ToolContent {
   steps: string[];
-  overviewHeading: string;
-  overview: string[];
-  details: string[];
-  problemsHeading: string;
-  problems: string[];
+  notes: string[];
   faqs: ToolFaq[];
   related: string[];
 }
@@ -19,367 +15,224 @@ export interface ToolContent {
 export const toolContent: Record<string, ToolContent> = {
   [routePaths.icsViewer]: {
     steps: [
-      'Choose one or more ICS files, or load the fictional sample.',
-      'Search events and filter by timezone or all-day status.',
-      'Open the details you need, then export the displayed rows if useful.',
+      'Choose one or more ICS files, or use the fictional sample.',
+      'Process the files, then search or filter the event table.',
+      'Review event details or download the displayed rows as CSV.',
     ],
-    overviewHeading: 'What the ICS viewer shows',
-    overview: [
-      'An ICS file is an iCalendar document used by calendar applications to exchange events. The viewer presents summaries, starts and ends, locations, descriptions, organizers, attendees, recurrence fields, and source files in a searchable table.',
-      'UTC, named-zone, floating, and date-only values stay distinct. Floating times are shown as written instead of being silently converted through the browser timezone.',
-    ],
-    details: ['event fields', 'time kind and timezone', 'recurrence metadata', 'source warnings'],
-    problemsHeading: 'Common ICS viewing questions',
-    problems: [
-      'A recurring master may describe many future events even when only one source row exists.',
-      'An all-day DTEND is exclusive, so its displayed range may end on the following date.',
-      'Unknown timezone definitions are preserved but cannot always be converted by the browser.',
+    notes: [
+      'UTC, named-zone, floating, and all-day values remain distinct; the viewer does not guess a timezone.',
+      'A recurring master describes a series. Use the recurring events viewer to expand occurrences.',
+      'Partly malformed calendars can return readable events with warnings for skipped data.',
     ],
     faqs: [
       {
         question: 'Can I open an ICS file without Outlook?',
-        answer:
-          'Yes. The viewer reads common iCalendar files directly and does not import them into a calendar account.',
-      },
-      {
-        question: 'Are calendar files uploaded?',
-        answer:
-          'No. Parsing and filtering run in this browser tab, and the application has no upload endpoint.',
+        answer: 'Yes. The ICS viewer reads the file without importing it into a calendar account.',
       },
       {
         question: 'What is a floating calendar time?',
-        answer:
-          'It is a wall-clock date and time without UTC or a named timezone. The viewer labels it rather than guessing a zone.',
+        answer: 'It is a wall-clock date and time with no UTC marker or named timezone.',
       },
     ],
     related: [routePaths.icsToCsv, routePaths.icsMerge, routePaths.icsRecurringEventsViewer],
   },
   [routePaths.icsToCsv]: {
     steps: [
-      'Choose one or more ICS files and select the calendar fields to export.',
-      'Process the files and inspect the CSV preview for dates and text values.',
-      'Download the UTF-8 CSV for a spreadsheet or data-cleaning workflow.',
+      'Choose ICS files and select the calendar columns you need.',
+      'Process the files and inspect the preview.',
+      'Download the UTF-8 CSV.',
     ],
-    overviewHeading: 'Calendar fields in the CSV',
-    overview: [
-      'The converter exports selected event fields such as title, start, end, timezone, location, description, UID, recurrence data, organizer, and source file. CSV quoting preserves commas, quotes, and line breaks.',
-      'Time values keep their source semantics: floating values are not treated as UTC, named-zone values keep their TZID, and all-day events stay date-only.',
-    ],
-    details: ['selectable columns', 'UTF-8 output', 'spreadsheet-safe text', 'timezone labels'],
-    problemsHeading: 'Before opening calendar CSV in a spreadsheet',
-    problems: [
-      'Spreadsheet applications may apply their own date formatting after import.',
-      'A recurrence rule remains one source event unless occurrences are expanded with the recurrence viewer.',
-      'Formula-like text is neutralized in CSV output while legitimate calendar values remain unchanged in memory.',
+    notes: [
+      'Floating times stay floating, named-zone values keep their TZID, and all-day events stay date-only.',
+      'Formula-like text is made inert for spreadsheets. CSV quoting preserves commas, quotes, and line breaks.',
+      'Recurring rules remain source rows unless you first expand them with the recurring events viewer.',
     ],
     faqs: [
       {
         question: 'Can I convert several calendars at once?',
-        answer:
-          'Yes. Each readable event includes its source filename so rows remain traceable after conversion.',
-      },
-      {
-        question: 'Does CSV conversion change event timezones?',
-        answer:
-          'No. The export records the normalized source representation and its time kind; it does not perform a timezone correction.',
+        answer: 'Yes. The source filename is available so converted rows remain traceable.',
       },
       {
         question: 'Will the CSV open in Excel or LibreOffice?',
-        answer:
-          'The download is UTF-8 CSV with a byte-order mark and standard quoting for broad spreadsheet compatibility.',
+        answer: 'Yes. Downloads use UTF-8, a byte-order mark, and standard CSV quoting.',
       },
     ],
     related: [routePaths.icsViewer, routePaths.icsMerge],
   },
   [routePaths.icsMerge]: {
     steps: [
-      'Choose the ICS files that should become one calendar.',
-      'Review diagnostics and any duplicate-event candidates.',
-      'Keep or exclude reviewed events, then download the merged ICS file.',
+      'Choose the ICS files to combine.',
+      'Process them and review warnings or duplicate candidates.',
+      'Keep or exclude reviewed events, then download the merged calendar.',
     ],
-    overviewHeading: 'How calendar merging works',
-    overview: [
-      'Readable VEVENT records are combined into one valid VCALENDAR. Event UIDs, recurrence rules, exceptions, attendees, and supported metadata are preserved where they remain unambiguous.',
-      'Duplicate detection is advisory. Matching UID and recurrence identity are strong evidence, while similar title, time, and location combinations remain reviewable rather than automatically removed.',
-    ],
-    details: [
-      'all readable events kept initially',
-      'review-only duplicate detection',
-      'VTIMEZONE conflict warnings',
-      'valid ICS download',
-    ],
-    problemsHeading: 'Merge boundaries',
-    problems: [
-      'Conflicting VTIMEZONE definitions with the same TZID are reported and the first definition is retained.',
-      'Invitation METHOD values such as REQUEST or REPLY are not carried into a neutral combined calendar.',
-      'A recurring master and one of its RECURRENCE-ID overrides are not treated as the same event.',
+    notes: [
+      'All readable events remain included until you explicitly resolve a duplicate candidate.',
+      'Conflicting VTIMEZONE definitions are reported; the first definition for that TZID is retained.',
+      'Existing event UIDs and recurrence identities are preserved where they are readable.',
     ],
     faqs: [
       {
         question: 'Can I combine Google Calendar and Outlook exports?',
         answer:
-          'Common standards-based exports can be combined, but vendor extensions and conflicting timezone definitions may produce warnings.',
+          'Usually. Standards-based events are combined, while vendor or timezone conflicts are reported.',
       },
       {
         question: 'Are duplicate events removed automatically?',
-        answer:
-          'No. Every event remains included until you explicitly resolve a duplicate candidate.',
-      },
-      {
-        question: 'Are event IDs preserved?',
-        answer:
-          'Existing UIDs are preserved. The merger does not invent replacement identities for readable events.',
+        answer: 'No. Duplicate matches are advisory and require an explicit review choice.',
       },
     ],
     related: [routePaths.icsViewer, routePaths.icsToCsv, routePaths.icsRecurringEventsViewer],
   },
   [routePaths.icsTimezoneFixer]: {
     steps: [
-      'Choose an ICS file and inspect its UTC, named-zone, floating, and all-day values.',
-      'Select Convert timezone or Assign timezone and review which events are eligible.',
-      'Preview the exact changes before downloading a corrected calendar.',
+      'Choose an ICS file and inspect its time kinds.',
+      'Choose Convert timezone or Assign timezone and set the eligible scope.',
+      'Review every proposed change before downloading the corrected ICS.',
     ],
-    overviewHeading: 'Convert timezone versus assign timezone',
-    overview: [
-      'Convert timezone preserves a known instant and changes its wall-clock representation. Assign timezone keeps a floating wall-clock value and gives it a named zone, which creates an instant.',
-      'The tool does not guess a source country or timezone. Date-only values remain unchanged, and ambiguous or nonexistent DST wall times are blocked rather than adjusted silently.',
-    ],
-    details: [
-      'explicit operation choice',
-      'DST gap and fold checks',
-      'floating-time assignment',
-      'change preview',
-    ],
-    problemsHeading: 'Timezone limitations',
-    problems: [
-      'Custom TZIDs must be recognized by the browser before they can be converted.',
-      'Recurring timezone conversion is blocked because one DTSTART rewrite cannot preserve every future instant across DST rules.',
-      'Embedded timezone definitions are preserved but their arbitrary transition rules are not executed.',
+    notes: [
+      'Convert preserves a known instant; Assign keeps a floating wall time and gives it a named zone.',
+      'All-day dates remain unchanged. Ambiguous or nonexistent DST wall times are blocked.',
+      'Recurring conversions and unrecognized custom TZIDs are not rewritten automatically.',
     ],
     faqs: [
       {
         question: 'Why is my ICS event in the wrong timezone?',
         answer:
-          'The source may be UTC, use a named TZID, or contain a floating wall time. Inspect the reported time kind before choosing a correction.',
-      },
-      {
-        question: 'What does Assign timezone do?',
-        answer:
-          'It attaches a named zone to a floating wall time without first shifting the displayed clock fields.',
+          'It may be UTC, named-zone, or floating. Check the reported time kind before choosing a fix.',
       },
       {
         question: 'Why is a DST time blocked?',
         answer:
-          'Some local times occur twice or not at all. Choosing an instant automatically would risk changing the intended event.',
+          'Some local times occur twice or not at all, so choosing an instant automatically would be unsafe.',
       },
     ],
     related: [routePaths.icsViewer, routePaths.icsRecurringEventsViewer],
   },
   [routePaths.icsRecurringEventsViewer]: {
     steps: [
-      'Choose an ICS file containing recurring events.',
-      'Select a series and set a bounded calendar-date range.',
-      'Review generated, added, modified, and cancelled occurrences or export them to CSV.',
+      'Choose an ICS file that contains recurring events.',
+      'Select a series and a bounded date range.',
+      'Expand and review occurrences, then download CSV if needed.',
     ],
-    overviewHeading: 'Reading RRULE and recurrence exceptions',
-    overview: [
-      'RRULE describes a repeating schedule. RDATE adds explicit occurrences, EXDATE removes identities, and RECURRENCE-ID records can replace or cancel individual generated instances.',
-      'Expansion respects UTC, named-zone, floating, and all-day semantics. Limits on date range and occurrence counts keep dense or malformed rules from locking the browser tab.',
-    ],
-    details: [
-      'plain-language rule explanation',
-      'bounded occurrence expansion',
-      'EXDATE and RDATE handling',
-      'modified occurrence replacement',
-    ],
-    problemsHeading: 'Recurrence cases that need care',
-    problems: [
-      'RANGE=THISANDFUTURE is detected but not approximated because later instances may require vendor-specific changes.',
-      'PERIOD-form RDATE values are preserved in ICS but are not expanded into viewer rows.',
-      'Unknown embedded timezone transitions cannot be evaluated like full calendar server software.',
+    notes: [
+      'RRULE generates a schedule, RDATE adds dates, EXDATE removes dates, and RECURRENCE-ID can modify one instance.',
+      'Expansion keeps UTC, named-zone, floating, and all-day semantics separate.',
+      'Date-range and occurrence limits prevent malformed or very dense rules from locking the tab.',
+      'RANGE=THISANDFUTURE and PERIOD-form RDATE values are reported but not approximated.',
     ],
     faqs: [
       {
         question: 'What is an RRULE?',
         answer:
-          'It is the iCalendar property that describes frequency, interval, count, end date, weekdays, and other recurrence constraints.',
+          'It is the iCalendar property describing recurrence frequency, interval, end, and constraints.',
       },
       {
         question: 'How are cancelled occurrences shown?',
         answer:
-          'A cancelled RECURRENCE-ID override is separated from active results and can be included with the Cancelled filter.',
+          'Cancelled RECURRENCE-ID overrides are separated and can be included with the Cancelled filter.',
       },
       {
-        question: 'Why is expansion limited?',
-        answer:
-          'A bounded range and occurrence cap keep second-by-second or malformed recurrences responsive in a browser.',
+        question: 'Why is recurrence expansion limited?',
+        answer: 'A bounded range and occurrence cap keep browser processing responsive.',
       },
     ],
     related: [routePaths.icsViewer, routePaths.icsTimezoneFixer, routePaths.icsToCsv],
   },
   [routePaths.vcfViewer]: {
     steps: [
-      'Choose one or more VCF or vCard files without importing them into an address book.',
-      'Search contacts and filter by field, source file, or vCard version.',
-      'Open structured details or export the currently displayed contacts to CSV.',
+      'Choose one or more VCF files, or use the fictional sample.',
+      'Process the files, then search and filter contacts.',
+      'Review structured fields or download selected contacts as CSV.',
     ],
-    overviewHeading: 'What a VCF contact can contain',
-    overview: [
-      'A VCF file can contain one or many vCards with structured names, email addresses, phone numbers, postal addresses, organizations, titles, dates, notes, URLs, and vendor properties.',
-      'The viewer supports common vCard 2.1, 3.0, and 4.0 records. Remote or embedded PHOTO and LOGO values are shown only as metadata and are never loaded into the page.',
-    ],
-    details: [
-      'structured contact fields',
-      'multiple-contact files',
-      'source and version filters',
-      'inert media metadata',
-    ],
-    problemsHeading: 'VCF compatibility notes',
-    problems: [
-      'Older vCard files may use legacy quoted-printable text or uncommon character sets.',
-      'Vendor properties are retained for inspection but their private semantics are not interpreted.',
-      'Partially malformed files may yield readable contacts alongside diagnostics for skipped cards.',
+    notes: [
+      'Common vCard 2.1, 3.0, and 4.0 fields are supported.',
+      'Remote and embedded PHOTO or LOGO values are shown only as inert metadata.',
+      'Partly malformed files can return readable contacts with diagnostics for skipped cards.',
     ],
     faqs: [
       {
         question: 'Can I open a VCF without importing contacts?',
-        answer:
-          'Yes. The viewer reads the file in this tab and does not add anything to your browser or device address book.',
+        answer: 'Yes. The VCF viewer does not add records to your browser or device address book.',
       },
       {
         question: 'Can one VCF contain multiple contacts?',
-        answer: 'Yes. Each BEGIN:VCARD and END:VCARD record is parsed as a separate contact.',
-      },
-      {
-        question: 'Which vCard versions are supported?',
-        answer:
-          'Common vCard 2.1, 3.0, and 4.0 fields are supported, with explicit diagnostics for unsupported or malformed values.',
+        answer: 'Yes. Each complete vCard record is displayed as a separate contact.',
       },
     ],
     related: [routePaths.vcfToCsv, routePaths.vcfMerge, routePaths.vcfDuplicateRemover],
   },
   [routePaths.vcfToCsv]: {
     steps: [
-      'Choose one or more VCF files and select the columns you need.',
-      'Choose one contact per row or expanded repeated-field rows.',
-      'Inspect the preview, then download UTF-8 CSV for your spreadsheet.',
+      'Choose VCF files and select the columns you need.',
+      'Choose combined contacts or expanded repeated-field rows.',
+      'Process, review the preview, and download UTF-8 CSV.',
     ],
-    overviewHeading: 'Combined and expanded contact CSV',
-    overview: [
-      'Combined mode keeps one contact per row and joins repeated email, phone, address, and website values. Expanded mode emits one repeated value per row for easier filtering or database import.',
-      'The converter adds spreadsheet formula protection to risky CSV cells while preserving legitimate international plus signs in phone fields. Canonical VCF values are not changed.',
-    ],
-    details: [
-      'selectable columns',
-      'combined row format',
-      'expanded repeated fields',
-      'CSV formula protection',
-    ],
-    problemsHeading: 'Choosing a CSV layout',
-    problems: [
-      'Combined rows are compact but require splitting repeated values for some database imports.',
-      'Expanded rows repeat the contact columns so each email, phone, address, or URL can stand alone.',
-      'CSV cannot retain every arbitrary vCard parameter or vendor property with full fidelity.',
+    notes: [
+      'Combined mode keeps one contact per row; expanded mode emits each repeated email, phone, address, or URL separately.',
+      'Risky formula-like cells are prefixed for spreadsheet safety, while international phone prefixes remain intact.',
+      'CSV cannot retain every vCard parameter or vendor property with full fidelity.',
     ],
     faqs: [
       {
         question: 'Can I convert a multi-contact VCF?',
-        answer:
-          'Yes. Every readable vCard record becomes one combined row or several expanded repeated-field rows.',
+        answer: 'Yes. Every readable vCard becomes a combined row or a set of expanded rows.',
       },
       {
-        question: 'Why are some CSV values prefixed with an apostrophe?',
-        answer:
-          'Spreadsheet applications can execute cells beginning with formula characters. The prefix keeps those text values inert.',
-      },
-      {
-        question: 'Are phone numbers changed?',
-        answer:
-          'No. International plus prefixes are retained in phone columns and expanded phone values.',
+        question: 'Why do some CSV values start with an apostrophe?',
+        answer: 'It prevents spreadsheet software from interpreting untrusted text as a formula.',
       },
     ],
     related: [routePaths.vcfViewer, routePaths.vcfMerge, routePaths.vcfDuplicateRemover],
   },
   [routePaths.vcfMerge]: {
     steps: [
-      'Choose the VCF files that should be combined.',
-      'Download every readable original vCard immediately or inspect the optional duplicate groups.',
-      'Apply reviewed field choices only if you want a normalized deduplicated export.',
+      'Choose the VCF files to combine.',
+      'Download all readable original cards or open duplicate review.',
+      'Apply reviewed field choices only if you want normalized vCard 4.0 output.',
     ],
-    overviewHeading: 'Combine first, deduplicate only by choice',
-    overview: [
-      'The direct merge download preserves every readable original contact and its source vCard version. Malformed cards are reported, and no duplicate is removed automatically.',
-      'Optional duplicate review compares provenance, match reasons, repeated values, singular conflicts, notes, organization hierarchy, and UID choices before producing normalized vCard 4.0 output.',
-    ],
-    details: [
-      'original records preserved',
-      'malformed-card diagnostics',
-      'optional indexed matching',
-      'field-level merge preview',
-    ],
-    problemsHeading: 'Choosing the right VCF merge output',
-    problems: [
-      'Use the direct combined download when source syntax and versions matter more than deduplication.',
-      'Use reviewed output when you have inspected conflicts and accept vCard 4.0 normalization.',
+    notes: [
+      'The direct merge preserves readable source records and removes no duplicate automatically.',
+      'Reviewed output can combine compatible repeated fields and asks about singular conflicts.',
       'PHOTO and LOGO content is omitted from normalized merged contacts and reported before download.',
     ],
     faqs: [
       {
         question: 'Does VCF merge remove duplicates?',
-        answer:
-          'Not by default. The first download combines every readable card; duplicate resolution is a separate optional workflow.',
+        answer: 'Not by default. Duplicate resolution is an optional review workflow.',
       },
       {
-        question: 'Can I merge vCard 2.1, 3.0, and 4.0 files?',
+        question: 'Can I merge different vCard versions?',
         answer:
-          'Yes. The direct download preserves source versions, while reviewed merged contacts use predictable vCard 4.0 output.',
-      },
-      {
-        question: 'What happens to malformed contacts?',
-        answer:
-          'Readable cards continue processing, while cards rejected by the parser are omitted and listed in diagnostics.',
+          'Yes. Direct output preserves source versions; reviewed merged contacts use vCard 4.0.',
       },
     ],
     related: [routePaths.vcfViewer, routePaths.vcfDuplicateRemover, routePaths.vcfToCsv],
   },
   [routePaths.vcfDuplicateRemover]: {
     steps: [
-      'Choose a VCF file and let the browser build bounded duplicate indexes.',
-      'Review exact, likely, and possible groups with their match reasons and source fields.',
-      'Keep, exclude, or merge selected records, then download the derived VCF when satisfied.',
+      'Choose VCF files and process them for duplicate candidates.',
+      'Review match reasons and compare exact, likely, or possible groups.',
+      'Keep, exclude, or merge records, then download the reviewed VCF.',
     ],
-    overviewHeading: 'Conservative duplicate contact review',
-    overview: [
-      'Candidate indexes consider exact contact data, UID, email, phone, name, address, organization, and birthday. Confidence labels explain uncertainty; same name or workplace alone is not enough to remove a contact.',
-      'Every likely or possible decision is controlled by you. Merge plans show provenance, union compatible repeated values, ask about singular conflicts, and remain reversible with undo or reset until download.',
-    ],
-    details: [
-      'explainable match reasons',
-      'false-positive safeguards',
-      'source-aware field comparison',
-      'derived undoable decisions',
-    ],
-    problemsHeading: 'Why duplicate review is not automatic',
-    problems: [
-      'Family members can share an address, and coworkers can share a company phone or generic mailbox.',
-      'Phone comparison preserves country codes and extensions instead of guessing regional formats.',
-      'Large repetitive buckets are capped for browser safety and produce diagnostics rather than incomplete silent results.',
+    notes: [
+      'Email, phone, UID, name, address, organization, and birthday signals are explainable and conservatively scored.',
+      'A shared name, address, or workplace alone is not enough to remove a contact.',
+      'Decisions remain reversible until download; the original selected records are not mutated.',
+      'Large repetitive match buckets are capped and reported instead of producing silent partial results.',
     ],
     faqs: [
       {
-        question: 'How does VCF duplicate detection work?',
-        answer:
-          'Bounded indexes generate candidate pairs, which are scored from visible identity and supporting signals and grouped for review.',
-      },
-      {
         question: 'Are possible duplicates deleted automatically?',
-        answer:
-          'No. Exact batches need confirmation, and every likely or possible group requires an explicit keep, exclude, or merge choice.',
+        answer: 'No. Every group requires an explicit keep, exclude, or merge decision.',
       },
       {
         question: 'Can I undo a duplicate decision?',
+        answer: 'Yes. Undo and Reset rebuild the output from the original contacts.',
+      },
+      {
+        question: 'How are duplicate contacts matched?',
         answer:
-          'Yes. Undo and Reset all derive the export again from the original contacts instead of mutating uploaded records.',
+          'Bounded indexes create candidate pairs, which are scored from visible identity and supporting fields.',
       },
     ],
     related: [routePaths.vcfViewer, routePaths.vcfMerge],

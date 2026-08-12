@@ -53,12 +53,15 @@ test('serves unique route metadata and valid structured data', async ({ page }) 
   expect(titles.size).toBe(routes.length);
 });
 
-test('keeps sponsor claims honest and placeholders non-clickable', async ({ page }) => {
+test('keeps sponsor claims honest and placeholder destinations non-clickable', async ({ page }) => {
   await page.goto('/sponsor');
   await expect(page.getByRole('heading', { name: /Reach people/ })).toBeVisible();
   await expect(page.getByText(/reliable baseline/)).toBeVisible();
-  await expect(page.getByText(/configure a real contact email/).first()).toBeVisible();
-  await expect(page.locator('a[href*="hello@example.com"]')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Ask about a placement' })).toHaveAttribute(
+    'href',
+    /^mailto:/,
+  );
+  await expect(page.locator('a[href*="example.com"], a[href*="/example"]')).toHaveCount(0);
   await expect(page.locator('.sponsor-card[target="_blank"]')).toHaveCount(0);
   await expect(page.getByText(/No tracking pixels, remote scripts/)).toBeVisible();
 });
@@ -624,7 +627,7 @@ test('resets duplicate resolutions back to original contact state', async ({ pag
   await page.getByRole('button', { name: /Resolve exact duplicates/ }).click();
   await page.getByRole('button', { name: 'Confirm exact resolution' }).click();
   await expect(page.locator('.duplicate-output-summary')).toContainText('1 contact');
-  await page.getByRole('button', { name: 'Reset all resolutions' }).click();
+  await page.getByRole('button', { name: 'Reset all' }).click();
   await expect(page.locator('.duplicate-output-summary')).toContainText('2 contacts');
   await expect(page.locator('.confidence-label', { hasText: 'Exact duplicate' })).toBeVisible();
 });
@@ -702,8 +705,11 @@ test('does not display expired or inactive sponsors', async ({ page }) => {
 test('keeps the primary tool usable on a mobile viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/ics-viewer');
-  await expect(page.getByText(/Your files never leave your device/).first()).toBeVisible();
+  await expect(page.getByText(/Files stay in this browser/).first()).toBeVisible();
   await expect(page.getByText('Drop your files here')).toBeInViewport();
+  await expect(page.getByRole('button', { name: 'Process files' })).toHaveCount(0);
+  await page.locator('input[type=file]').setInputFiles(sample('calendar-basic.ics'));
+  await expect(page.getByRole('button', { name: 'Process files' })).toBeInViewport();
 });
 
 test('supports keyboard operation of the upload component', async ({ page }) => {

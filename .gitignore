@@ -7,6 +7,10 @@ coverage/
 playwright-report/
 test-results/
 blob-report/
+/screenshots/
+/artifacts/
+.lighthouseci/
+*.cpuprofile
 
 # TypeScript and tool caches
 *.tsbuildinfo

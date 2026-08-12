@@ -9,7 +9,7 @@ export function isIcsPath(path: string): boolean {
 
 export function icsOptionsMarkup(path: string): string {
   if (path === routePaths.icsToCsv)
-    return `<fieldset><legend>Export columns</legend><div class="check-grid">${checkboxes([...calendarCsvColumns])}</div></fieldset><div class="option-row"><label>Date format<select id="date-format"><option value="iso">ISO 8601</option><option value="locale">Browser locale</option></select></label><label>Timezone output<select id="timezone-output"><option value="original">Original wall-clock value</option><option value="utc">UTC where resolvable</option><option value="local">Browser timezone where resolvable</option></select></label></div>`;
+    return `<fieldset><legend>CSV columns</legend><div class="check-grid">${checkboxes([...calendarCsvColumns])}</div></fieldset><div class="option-row"><label>Date format<select id="date-format"><option value="iso">ISO 8601</option><option value="locale">Browser locale</option></select></label><label>Timezone output<select id="timezone-output"><option value="original">Original wall-clock value</option><option value="utc">UTC where resolvable</option><option value="local">Browser timezone where resolvable</option></select></label></div>`;
   if (path === routePaths.icsMerge)
     return `<div class="notice"><strong>Nothing is removed automatically.</strong> The merged preview keeps every readable event. Review duplicate candidates after processing and explicitly exclude only the copies you do not want.</div>`;
   if (path === routePaths.icsTimezoneFixer)

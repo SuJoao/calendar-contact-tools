@@ -48,7 +48,8 @@ for (const [path, content] of Object.entries(toolContent)) {
       errors.push(`${path}: related route ${related} does not exist.`);
     if (related === path) errors.push(`${path}: related links include the current page.`);
   }
-  if (content.faqs.length < 3) errors.push(`${path}: at least three visible FAQs are required.`);
+  if (content.faqs.length < 2 || content.faqs.length > 3)
+    errors.push(`${path}: two or three visible FAQs are required.`);
 }
 
 const sitemap = sitemapXml();

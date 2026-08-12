@@ -89,7 +89,7 @@ export function renderDuplicateReview(
   );
   exactButton.disabled = analysis.exactDuplicateCopies === 0;
   const undo = el('button', { type: 'button', class: 'text-button' }, 'Undo last resolution');
-  const reset = el('button', { type: 'button', class: 'text-button' }, 'Reset all resolutions');
+  const reset = el('button', { type: 'button', class: 'text-button' }, 'Reset all');
   actions.append(exactButton, undo, reset);
   const live = el('div', {
     class: 'resolution-status',
@@ -453,7 +453,7 @@ function renderMergeEditor(
           mergedContactIds: contacts.map((contact) => contact.id),
           selections,
         },
-        `${contacts.length} records merged. Reset or undo remains available before export.`,
+        `${contacts.length} records merged. Reset or undo remains available before download.`,
       ),
     );
     cancelPreview.addEventListener('click', () => preview.remove());

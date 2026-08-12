@@ -5,8 +5,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.icsViewer,
     title: 'ICS Viewer',
-    description:
-      'Open an ICS calendar and inspect events, dates, timezones, and recurrence details without uploading the file.',
+    description: 'Inspect events, dates, timezones, and recurrence fields in an ICS file.',
     seoTitle: 'ICS Viewer — Open Calendar Files Privately',
     metaDescription:
       'Open and inspect ICS calendar files directly in your browser. Review events, dates, timezones, and recurrence details without an upload or signup.',
@@ -19,8 +18,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.icsToCsv,
     title: 'ICS to CSV Converter',
-    description:
-      'Convert ICS calendar events to spreadsheet-ready CSV with a local preview and no file upload.',
+    description: 'Choose calendar fields, preview rows, and download spreadsheet-ready CSV.',
     seoTitle: 'ICS to CSV — Convert Calendar Files Privately',
     metaDescription:
       'Convert ICS calendar files to UTF-8 CSV in your browser. Choose fields, preview rows, and download spreadsheet-ready data without uploading or signing up.',
@@ -33,8 +31,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.icsMerge,
     title: 'Merge ICS Calendars',
-    description:
-      'Combine several ICS files, review likely duplicate events, and download one calendar without uploading your schedules.',
+    description: 'Combine calendars, review duplicate events, and download one ICS file.',
     seoTitle: 'Merge ICS Files — Private Calendar Combiner',
     metaDescription:
       'Merge several ICS calendar files in your browser. Review duplicate candidates and download one valid calendar without uploading schedules or creating an account.',
@@ -47,8 +44,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.icsTimezoneFixer,
     title: 'ICS Timezone Fixer',
-    description:
-      'Inspect floating and zoned calendar times, then explicitly assign or convert a timezone without uploading the ICS file.',
+    description: 'Inspect floating and zoned times, then assign or convert a timezone.',
     seoTitle: 'ICS Timezone Fixer — Review Calendar Times',
     metaDescription:
       'Inspect and correct common ICS timezone problems locally. Assign floating times or convert supported zones with DST safeguards and no file upload.',
@@ -61,8 +57,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.icsRecurringEventsViewer,
     title: 'Recurring Events Viewer',
-    description:
-      'Read ICS recurrence rules and expand bounded occurrences, exceptions, and modified events directly in your browser.',
+    description: 'Read recurrence rules and expand bounded occurrences, exceptions, and changes.',
     seoTitle: 'ICS Recurring Events Viewer — Expand RRULEs',
     metaDescription:
       'View ICS recurring events and expand RRULE, RDATE, EXDATE, and modified occurrences within a date range. Processing stays local with no signup.',
@@ -76,7 +71,7 @@ export const toolRoutes: RouteDefinition[] = [
     path: routePaths.vcfViewer,
     title: 'VCF Viewer',
     description:
-      'Open VCF or vCard files, inspect contact fields, and search records without importing or uploading your address book.',
+      'Open VCF files, inspect contact fields, and search records without importing them.',
     seoTitle: 'VCF Viewer — Open vCard Contact Files Privately',
     metaDescription:
       'Open and inspect VCF or vCard contact files in your browser. Search names, email, phone, and address fields without importing contacts or uploading data.',
@@ -89,8 +84,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.vcfToCsv,
     title: 'VCF to CSV Converter',
-    description:
-      'Convert VCF contacts to spreadsheet-ready CSV with combined or expanded repeated fields and no address-book upload.',
+    description: 'Choose contact fields and download combined or expanded CSV rows.',
     seoTitle: 'VCF to CSV — Convert Contacts for Spreadsheets',
     metaDescription:
       'Convert VCF and vCard contacts to UTF-8 CSV locally. Preview columns, handle repeated fields, and protect spreadsheet cells without uploading contacts.',
@@ -103,8 +97,7 @@ export const toolRoutes: RouteDefinition[] = [
   {
     path: routePaths.vcfMerge,
     title: 'Merge VCF Contact Files',
-    description:
-      'Combine several VCF files while preserving readable contacts, with optional duplicate review and no contact upload.',
+    description: 'Combine VCF files, preserve readable contacts, and optionally review duplicates.',
     seoTitle: 'Merge VCF Files — Combine Contact Files Privately',
     metaDescription:
       'Merge multiple VCF or vCard files in your browser. Preserve readable contacts, report malformed cards, and optionally review duplicates without an upload.',
@@ -118,7 +111,7 @@ export const toolRoutes: RouteDefinition[] = [
     path: routePaths.vcfDuplicateRemover,
     title: 'VCF Duplicate Remover',
     description:
-      'Find possible duplicate VCF contacts, compare their fields, and make reversible choices without uploading your address book.',
+      'Find duplicate contacts, compare fields, and make reversible keep or merge choices.',
     seoTitle: 'Remove Duplicate VCF Contacts — Private Review',
     metaDescription:
       'Find and review duplicate contacts in VCF files locally. Compare match reasons, merge fields, undo decisions, and export without uploading your address book.',

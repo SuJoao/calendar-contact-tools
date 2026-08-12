@@ -25,7 +25,5 @@ export function toolLayout(route: RouteDefinition, content = ''): string {
     <main id="main-content"><header class="page-heading"><h1>${route.title}</h1><p>${route.description}</p>${privacyBadge()}</header>
     <section class="tool-card" aria-label="${route.title}"><div id="tool-options">${content}</div><div id="uploader"></div><div id="result" class="result-area" aria-live="polite"></div></section>
     ${sponsorPlacement(placement)}
-    <section class="content-grid tool-guide"><article><h2>How to use this tool</h2><ol>${list(guide.steps)}</ol></article><article><h2>${escapeHtml(guide.overviewHeading)}</h2>${guide.overview.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}<ul class="compact-list">${list(guide.details)}</ul></article></section>
-    <section class="content-grid tool-reference"><article><h2>${escapeHtml(guide.problemsHeading)}</h2><ul>${list(guide.problems)}</ul></article><article><h2>Frequently asked questions</h2>${guide.faqs.map((faq) => `<details><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('')}</article></section>
-    <section class="related-tools"><h2>Related tools</h2><div>${related}</div></section>${donationCard()}</main>`;
+    <section class="tool-support"><div class="tool-guide"><h2>How it works</h2><ol>${list(guide.steps)}</ol><details class="notes-details"><summary>Notes and limitations</summary><ul>${list(guide.notes)}</ul></details></div><div class="tool-faq"><h2>Frequently asked questions</h2>${guide.faqs.map((faq) => `<details><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('')}</div><div class="related-tools"><h2>Related tools</h2><div>${related}</div></div></section>${donationCard()}</main>`;
 }

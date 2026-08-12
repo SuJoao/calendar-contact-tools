@@ -2,6 +2,7 @@ import { siteConfig } from '../config/site';
 import { analytics, inputCountBucket } from '../utils/analytics';
 import { el } from '../utils/dom';
 import { ErrorSummary } from './ErrorSummary';
+import { icon } from './Icon';
 
 export interface FileUploaderOptions {
   extensions: string[];
@@ -33,12 +34,12 @@ export class FileUploader {
       <div data-error-summary></div>
       <label class="drop-zone" tabindex="0">
         <input class="sr-only file-input" type="file" ${options.multiple ? 'multiple' : ''} accept="${options.extensions.map((e) => `.${e}`).join(',')}" />
-        <span class="upload-icon" aria-hidden="true">↑</span><span class="upload-copy"><strong>Drop ${options.multiple ? 'your files' : `your ${fileType} file`} here</strong><small>${fileType} · up to ${Math.round((options.maxSizeBytes ?? siteConfig.maxFileSizeBytes) / 1024 / 1024)} MB each</small></span>
+        <span class="upload-icon">${icon('upload')}</span><span class="upload-copy"><strong>Drop ${options.multiple ? 'your files' : `your ${fileType} file`} here</strong><small>${fileType} · up to ${Math.round((options.maxSizeBytes ?? siteConfig.maxFileSizeBytes) / 1024 / 1024)} MB each · processed locally</small></span>
         <span class="button primary choose-control">Choose ${options.multiple ? 'files' : 'file'}</span>
       </label>
-      <div class="upload-actions"><span class="local-note"><span aria-hidden="true">●</span> Processed locally</span><button class="text-button sample-button" type="button">Use sample</button><button class="text-button reset-button" type="button" disabled>Reset</button></div>
+      <div class="upload-actions"><button class="text-button sample-button" type="button">Use sample</button><button class="text-button reset-button" type="button" hidden>Reset</button></div>
       <ul class="selected-files" aria-label="Selected files"></ul>
-      <button class="button primary process-button" type="button" disabled>Process ${options.multiple ? 'files' : 'file'}</button>
+      <button class="button primary process-button" type="button" hidden>Process ${options.multiple ? 'files' : 'file'}</button>
       <div class="sr-only upload-status" aria-live="polite"></div>
     </div>`;
     this.input = root.querySelector<HTMLInputElement>('.file-input')!;
@@ -133,7 +134,9 @@ export class FileUploader {
     });
     const disabled = this.files.length === 0;
     this.processButton.disabled = disabled;
-    (this.root.querySelector('.reset-button') as HTMLButtonElement).disabled = disabled;
+    this.processButton.hidden = disabled;
+    (this.root.querySelector('.reset-button') as HTMLButtonElement).hidden = disabled;
+    this.root.querySelector('.upload-shell')?.classList.toggle('has-files', !disabled);
     this.status.textContent = disabled
       ? 'No files selected.'
       : `${this.files.length} file${this.files.length === 1 ? '' : 's'} selected.`;

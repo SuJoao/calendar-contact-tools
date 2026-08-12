@@ -1,6 +1,6 @@
 {
   "name": "Calendar Contact Tools",
-  "short_name": "C·C Tools",
+  "short_name": "Calendar Tools",
   "description": "Private browser utilities for ICS calendars and VCF contacts.",
   "start_url": "./",
   "display": "browser",

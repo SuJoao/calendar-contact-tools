@@ -30,7 +30,7 @@ export const staticMeta: Record<string, PageMetadata> = {
     path: routePaths.about,
     title: 'About Calendar & Contact Tools',
     description:
-      'Why Calendar Contact Tools provides open, privacy-first browser utilities for real-world ICS and VCF files, including supported formats and limitations.',
+      'Why Calendar Contact Tools provides open browser utilities for real-world ICS and VCF files, including supported formats, local processing, and limitations.',
     indexable: true,
   },
   [routePaths.sponsor]: {
@@ -125,7 +125,7 @@ export function structuredDataForPath(path: string): Record<string, unknown> {
       '@type': 'SoftwareApplication',
       name: route.title,
       applicationCategory: 'UtilitiesApplication',
-      operatingSystem: 'Any modern browser',
+      operatingSystem: 'Any current browser',
       url: canonicalUrl(path),
       description: route.metaDescription,
       isAccessibleForFree: true,

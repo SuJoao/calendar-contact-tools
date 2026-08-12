@@ -84,7 +84,7 @@ function renderViewer(result: HTMLElement, events: CalendarEvent[]): void {
   };
   controls.addEventListener('input', render);
   render();
-  addDownload(result, 'Export displayed CSV', () =>
+  addDownload(result, 'Download displayed CSV', () =>
     downloadText(
       toCsv(
         displayed.map((event) => calendarEventToCsvRow(event)),

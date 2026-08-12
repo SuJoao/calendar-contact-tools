@@ -82,8 +82,8 @@ describe('SEO and content architecture', () => {
     for (const route of toolRoutes) {
       const content = toolContent[route.path]!;
       expect(content.steps).toHaveLength(3);
-      expect(content.faqs.length).toBeGreaterThanOrEqual(3);
-      expect(content.overview.join(' ').length).toBeGreaterThan(180);
+      expect(content.faqs.length).toBeGreaterThanOrEqual(2);
+      expect(content.notes.length).toBeGreaterThanOrEqual(3);
       expect(content.related).not.toContain(route.path);
       for (const related of content.related)
         expect(toolRoutes.some((candidate) => candidate.path === related)).toBe(true);

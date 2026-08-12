@@ -94,7 +94,7 @@ function renderViewer(result: HTMLElement, contacts: Contact[]): void {
   result.append(controls, tableRoot);
   render();
 
-  addDownload(result, 'Export selected contacts to CSV', () => {
+  addDownload(result, 'Download selected contacts CSV', () => {
     const chosen = contacts.filter((contact) => selected.has(contact.id));
     if (!chosen.length) {
       result.append(
