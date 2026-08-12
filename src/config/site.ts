@@ -2,7 +2,7 @@ export const siteConfig = {
   siteName: 'Calendar Contact Tools',
   siteDescription: 'Private browser-based tools for ICS calendars and VCF contacts.',
   siteUrl: 'https://sujoao.github.io/calendar-contact-tools/',
-  contactEmail: 'hello@example.com',
+  contactEmail: 'joaosu@ua.pt',
   githubUrl: 'https://github.com/SuJoao/calendar-contact-tools',
   koFiUrl: 'https://ko-fi.com/example',
   githubSponsorsUrl: 'https://github.com/sponsors/example',
