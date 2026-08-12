@@ -11,6 +11,7 @@ import {
 } from '../config/seo';
 import { siteConfig } from '../config/site';
 import { toolContent } from '../content/toolContent';
+import { homePage } from '../pages/home';
 import { staticPage, formatTraffic, sponsorContactMarkup } from '../pages/static';
 import { routePaths } from '../routePaths';
 import { toolRoutes } from '../routes';
@@ -39,6 +40,16 @@ const sponsor = (overrides: Partial<Sponsor> = {}): Sponsor => ({
 });
 
 describe('SEO and content architecture', () => {
+  it('keeps the product name distinct from homepage search language', () => {
+    expect(homePage()).toContain('<h1>ICS &amp; VCF tools</h1>');
+    const data = structuredDataForPath('/');
+    const graph = data['@graph'] as Record<string, unknown>[];
+    expect(graph.find((item) => item['@type'] === 'WebSite')).toMatchObject({
+      name: 'Calendar Contact Tools',
+      alternateName: 'ICS & VCF Tools',
+    });
+  });
+
   it('defines unique, useful metadata for all 13 indexable routes', () => {
     expect(publicPageMetadata).toHaveLength(13);
     expect(new Set(publicPageMetadata.map((page) => page.title)).size).toBe(13);
@@ -79,8 +90,20 @@ describe('SEO and content architecture', () => {
   });
 
   it('gives every tool distinct instructions, limitations, FAQs, and valid related links', () => {
+    const expectedHeadings: Record<string, string> = {
+      [routePaths.icsViewer]: 'ICS Viewer',
+      [routePaths.icsToCsv]: 'ICS to CSV Converter',
+      [routePaths.icsMerge]: 'Merge ICS Files',
+      [routePaths.icsTimezoneFixer]: 'ICS Timezone Fixer',
+      [routePaths.icsRecurringEventsViewer]: 'ICS Recurring Events Viewer',
+      [routePaths.vcfViewer]: 'VCF Viewer',
+      [routePaths.vcfToCsv]: 'VCF to CSV Converter',
+      [routePaths.vcfMerge]: 'Merge VCF Files',
+      [routePaths.vcfDuplicateRemover]: 'VCF Duplicate Remover',
+    };
     for (const route of toolRoutes) {
       const content = toolContent[route.path]!;
+      expect(route.title).toBe(expectedHeadings[route.path]);
       expect(content.steps).toHaveLength(3);
       expect(content.faqs.length).toBeGreaterThanOrEqual(2);
       expect(content.notes.length).toBeGreaterThanOrEqual(3);

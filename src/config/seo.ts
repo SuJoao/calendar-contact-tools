@@ -12,9 +12,9 @@ export interface PageMetadata {
 
 export const homeMeta: PageMetadata = {
   path: '/',
-  title: 'Calendar & Contact File Tools — Private ICS & VCF',
+  title: 'ICS & VCF Tools — Calendar Contact Tools',
   description:
-    'View, convert, merge, and clean ICS calendar and VCF contact files directly in your browser. Files stay on your device and no signup is required.',
+    'View, convert, merge, and clean calendar (.ics) and contact (.vcf) files directly in your browser. Files stay on your device and no account is required.',
   indexable: true,
 };
 
@@ -84,6 +84,7 @@ export function structuredDataForPath(path: string): Record<string, unknown> {
     graph.push({
       '@type': 'WebSite',
       name: siteConfig.siteName,
+      alternateName: 'ICS & VCF Tools',
       url: canonicalUrl('/'),
       description: siteConfig.siteDescription,
     });

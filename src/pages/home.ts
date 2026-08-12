@@ -15,7 +15,7 @@ export function homePage(): string {
       .join('');
 
   return `<main id="main-content">
-    <section class="home-intro"><h1>Calendar &amp; contact file tools</h1><p class="lede">View, convert, merge, and clean ICS and VCF files in your browser.</p>${privacyBadge()}</section>
+    <section class="home-intro"><h1>ICS &amp; VCF tools</h1><p class="lede">View, convert, merge, and clean calendar (.ics) and contact (.vcf) files directly in your browser.</p>${privacyBadge()}</section>
     <section class="tool-directory" aria-labelledby="tools-heading"><h2 id="tools-heading" class="sr-only">Available tools</h2><div class="tool-group"><header>${icon('calendar', 'category-icon')}<span><span class="file-kind">.ics</span><h2>Calendar</h2></span></header><div class="tool-list">${tools('ics')}</div></div>
     <div class="tool-group"><header>${icon('contact', 'category-icon')}<span><span class="file-kind">.vcf</span><h2>Contacts</h2></span></header><div class="tool-list">${tools('vcf')}</div></div></section>
     ${sponsorPlacement('homepage')}
